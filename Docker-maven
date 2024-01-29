@@ -1,2 +1,0 @@
-FROM maven 
-RUN yum install tomcat -y

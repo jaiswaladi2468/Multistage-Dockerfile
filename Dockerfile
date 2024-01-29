@@ -1,9 +1,11 @@
+# Stage-1 Build
 FROM maven as maven
 RUN mkdir /usr/src/mymaven
 WORKDIR /usr/src/mymaven
 COPY . .
 RUN mvn install -DskipTests
 
+# Stage-2 Deploy
 FROM tomcat 
 WORKDIR webapps 
 COPY --from=maven /usr/src/mymaven/target/java-tomcat-maven-example.war .
